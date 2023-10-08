@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,600;0,700;0,900;1,400&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+:root {
+  --myBeige: rgb(140, 140, 101);
+  --myBrown: rgb(83, 53, 33);
+  --myWhite: rgb(140, 140, 101);
+}
+
+
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.container {
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media(min-width:770px) {
+  .container {
+    width: 750px
+  }
+}
+
+@media(min-width:990px) {
+  .container {
+    width: 970px
+  }
+}
+
+@media(min-width:1200px) {
+  .container {
+    width: 1170px
+  }
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--myBeige);
+  color: var(--myBrown);
+  text-transform: uppercase;
+  padding: 10px, 15px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.button:hover {
+  background-color: rgb(91, 64, 64);
+  cursor: pointer;
+}
+
+.button:disabled {
+  color: rgb(139, 132, 132);
+  opacity: 0.6;
+  pointer-events: none;
+}

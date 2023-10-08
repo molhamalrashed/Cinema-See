@@ -1,0 +1,76 @@
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import useFetch from './Use-fetch';
+import apiUrls from './cinema-urls';
+import { useApi } from './Api-context';
+
+
+
+
+function NavCinema() {
+    const { handleApiUrl } = useApi();
+    const genresUrl = apiUrls.genres;
+    const { data: myData, loading: genresLoading, error: genresError } = useFetch(genresUrl);
+
+    if (genresLoading) {
+        // Data is still loading
+        return <div>Loading genres...</div>;
+    }
+
+    if (genresError || !myData || !myData.genres || !Array.isArray(myData.genres)) {
+        // Handle errors or missing data
+        return <div>Error loading genres or data is missing.</div>;
+    }
+
+    const genres = myData.genres;
+    return (
+        <Navbar expand="lg" className="bg-body-tertiary">
+            <Container fluid>
+                <Navbar.Brand href="#" onClick={() => handleApiUrl('home')}>Cinema-See</Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: '100px' }}
+                        navbarScroll
+                    >
+
+
+                        <NavDropdown title="Type" id="navbarScrollingDropdown">
+                            <NavDropdown.Item href="#movies" onClick={() => handleApiUrl('movies')}>
+                                Movies
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#series" onClick={() => handleApiUrl('series')}>
+                                Series
+                            </NavDropdown.Item>
+
+                        </NavDropdown>
+                        <NavDropdown title="Genre" id="navbarScrollingDropdown">
+                            {genres.map((genre) => (
+                                <NavDropdown.Item key={genre.id} href="#action3" onClick={() => handleApiUrl(genre.id)}>
+                                    {genre.name}
+                                </NavDropdown.Item>
+                            ))}
+                        </NavDropdown>
+                        <Nav.Link href="#action2">Favorite</Nav.Link>
+                    </Nav>
+                    <Form className="d-flex">
+                        <Form.Control
+                            type="search"
+                            placeholder="Search"
+                            className="me-2"
+                            aria-label="Search"
+                        />
+                        <Button variant="outline-success">Search</Button>
+                    </Form>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
+}
+
+export default NavCinema;
