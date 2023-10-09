@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CurrentPage from './components/Current-page.js';
 import { ApiProvider } from './components/Api-context';
 import { FavoriteProvider } from './components/favorite-context';
+import FavoritePage from './components/Favorite-page';
 
 
 
@@ -15,10 +16,15 @@ function App() {
   return (
     <FavoriteProvider>
       <ApiProvider>
-        <div>
-          <NavCinema />
-          <CurrentPage />
-        </div>
+        <Router>
+          <div>
+            <NavCinema />
+            <Routes>
+              <Route path="/" element={<CurrentPage />} />
+              <Route path="/favorites" element={<FavoritePage />} />
+            </Routes>
+          </div>
+        </Router>
       </ApiProvider>
     </FavoriteProvider>
   )
