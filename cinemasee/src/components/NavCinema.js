@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import useFetch from './Use-fetch';
 import apiUrls from './cinema-urls';
 import { useApi } from './Api-context';
-import { link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -32,7 +32,7 @@ function NavCinema() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
-                <Navbar.Brand href="#" onClick={() => handleApiUrl('home')}>Cinema-See</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" onClick={() => handleApiUrl('home')}>Cinema-See</Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
@@ -44,22 +44,22 @@ function NavCinema() {
 
 
                         <NavDropdown title="Type" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#movies" onClick={() => handleApiUrl('movies')}>
+                            <NavDropdown.Item onClick={() => handleApiUrl('movies')}>
                                 Movies
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#series" onClick={() => handleApiUrl('series')}>
+                            <NavDropdown.Item onClick={() => handleApiUrl('series')}>
                                 Series
                             </NavDropdown.Item>
 
                         </NavDropdown>
                         <NavDropdown title="Genre" id="navbarScrollingDropdown">
                             {genres.map((genre) => (
-                                <NavDropdown.Item key={genre.id} href="#action3" onClick={() => handleApiUrl(genre.id)}>
+                                <NavDropdown.Item key={genre.id} onClick={() => handleApiUrl(genre.id)}>
                                     {genre.name}
                                 </NavDropdown.Item>
                             ))}
                         </NavDropdown>
-                        <Nav.Link href="#action2">Favorite</Nav.Link>
+                        <Nav.Link as={Link} to="favorites">Favorite</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control

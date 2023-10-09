@@ -10,15 +10,15 @@ function MovieRender({ title, description, imgUrl, id }) {
 
 
     //this part to handle the add to favorite feature 
-    const { favoriteIds, addFavoriteId, removeFromFavoriteIds, isFavorite } = useFavorite();
+    const { favoriteItems, addFavoriteItem, removeFromFavoriteItems, isFavorite } = useFavorite();
     const isMovieFavorite = isFavorite(id)
     const toggleFavorite = () => {
         if (isMovieFavorite) {
-            console.log(`remove from ${favoriteIds.length}`)
-            removeFromFavoriteIds(id)
+            console.log(`remove from ${favoriteItems}`)
+            removeFromFavoriteItems(id)
         } else {
-            console.log(`add to ${favoriteIds.length}`)
-            addFavoriteId(id)
+            console.log(`add to ${favoriteItems}`)
+            addFavoriteItem({ title, description, imgUrl, id })
         }
     }
 
