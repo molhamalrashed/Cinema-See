@@ -5,6 +5,7 @@ import NavCinema from './components/NavCinema.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CurrentPage from './components/Current-page.js';
 import { ApiProvider } from './components/Api-context';
+import { FavoriteProvider } from './components/favorite-context';
 
 
 
@@ -12,12 +13,14 @@ import { ApiProvider } from './components/Api-context';
 function App() {
 
   return (
-    <ApiProvider>
-      <div>
-        <NavCinema />
-        <CurrentPage />
-      </div>
-    </ApiProvider>
+    <FavoriteProvider>
+      <ApiProvider>
+        <div>
+          <NavCinema />
+          <CurrentPage />
+        </div>
+      </ApiProvider>
+    </FavoriteProvider>
   )
 }
 

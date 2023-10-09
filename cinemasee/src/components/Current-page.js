@@ -32,10 +32,10 @@ export const CurrentPage = () => {
     return (
         <div className='home-page'>
             <ul >
-                <Carousel showDots={true} responsive={responsive}>
+                <Carousel className='carousel' responsive={responsive}>
                     {items.map((item) => (
                         <li key={item.id}>
-                            <MovieRender title={item.title || item.name} description={item.overview} imgUrl={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                            <MovieRender title={item.title || item.name} description={item.overview} imgUrl={`https://image.tmdb.org/t/p/w500${item.poster_path}`} id={item.id} />
                         </li>
                     ))}
                 </Carousel>
