@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -7,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import useFetch from './Use-fetch';
 import apiUrls from './cinema-urls';
 import { useApi } from './Api-context';
+import { link } from 'react-router-dom';
 
 
 
@@ -31,6 +33,7 @@ function NavCinema() {
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
                 <Navbar.Brand href="#" onClick={() => handleApiUrl('home')}>Cinema-See</Navbar.Brand>
+
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
