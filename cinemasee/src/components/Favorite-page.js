@@ -11,7 +11,7 @@ import MovieRender from './Movie-render';
 export function FavoritePage() {
 
     const { favoriteItems } = useFavorite();
-    console.log(favoriteItems)
+
 
 
     return (
