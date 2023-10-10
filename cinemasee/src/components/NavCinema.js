@@ -44,7 +44,7 @@ function NavCinema() {
 
     const genres = myData.genres;
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary" >
             <Container fluid>
                 <Navbar.Brand as={Link} to="/" onClick={() => handleApiUrl('home')}>Cinema-See</Navbar.Brand>
 

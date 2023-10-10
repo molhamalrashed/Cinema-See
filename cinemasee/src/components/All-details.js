@@ -83,7 +83,7 @@ export const AllDetails = () => {
                     </ul>
                 </Card.Text>
                 <Button variant="primary" onClick={toggleFavorite} style={{ backgroundColor: isMovieFavorite ? "red" : "blue", color: "white" }}>
-                    {isMovieFavorite ? "Already in the favorites" : "Add to favorites"}
+                    {isMovieFavorite ? "Remove from favorites" : "Add to favorites"}
                 </Button>
                 <Card.Footer className="text-muted">{movie.status}</Card.Footer>
             </Card>
