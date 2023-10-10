@@ -13,6 +13,7 @@ function useFetch(url) {
                     throw new Error('Network response was not ok');
                 }
                 const jsonData = await response.json();
+
                 setData(jsonData);
                 setLoading(false);
             } catch (err) {

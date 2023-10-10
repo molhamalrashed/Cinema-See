@@ -1,5 +1,5 @@
 import Button from 'react-bootstrap/Button';
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -14,6 +14,12 @@ import { Link } from 'react-router-dom';
 
 
 function NavCinema() {
+    const [searchQuery, setSearchQuery] = useState('')
+
+    const handleSearchQueryChange = (e) => {
+        setSearchQuery(e.target.value);
+    }
+
     const { handleApiUrl } = useApi();
     const genresUrl = apiUrls.genres;
     const { data: myData, loading: genresLoading, error: genresError } = useFetch(genresUrl);
@@ -67,8 +73,12 @@ function NavCinema() {
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
+                            value={searchQuery}
+                            onChange={handleSearchQueryChange} // Update the state as the user types
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <Button variant="outline-success" as={Link} to={`/search/${searchQuery}`}>
+                            Search
+                        </Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>
