@@ -1,5 +1,5 @@
 import Button from 'react-bootstrap/Button';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -9,16 +9,24 @@ import useFetch from './Use-fetch';
 import apiUrls from './cinema-urls';
 import { useApi } from './Api-context';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 function NavCinema() {
     const [searchQuery, setSearchQuery] = useState('')
+    const navigate = useNavigate();
 
     const handleSearchQueryChange = (e) => {
         setSearchQuery(e.target.value);
     }
+
+    useEffect(() => {
+        if (searchQuery) {
+            navigate(`/search/${searchQuery}`);
+        }
+    }, [searchQuery, navigate]);
 
     const { handleApiUrl } = useApi();
     const genresUrl = apiUrls.genres;
