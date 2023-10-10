@@ -7,6 +7,7 @@ import CurrentPage from './components/Current-page.js';
 import { ApiProvider } from './components/Api-context';
 import { FavoriteProvider } from './components/favorite-context';
 import FavoritePage from './components/Favorite-page';
+import AllDetails from './components/All-details';
 
 
 
@@ -22,6 +23,7 @@ function App() {
             <Routes>
               <Route path="/" element={<CurrentPage />} />
               <Route path="/favorites" element={<FavoritePage />} />
+              <Route path="/details/:id" element={<AllDetails />} />
             </Routes>
           </div>
         </Router>

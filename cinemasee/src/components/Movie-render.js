@@ -5,19 +5,19 @@ import '../App.css';
 import { useFavorite } from './favorite-context';
 import RegularHeart from './regular-heart';
 import SolidHeart from './solid-heart';
+import { Link } from 'react-router-dom';
+
 
 function MovieRender({ title, description, imgUrl, id }) {
 
 
     //this part to handle the add to favorite feature 
-    const { favoriteItems, addFavoriteItem, removeFromFavoriteItems, isFavorite } = useFavorite();
+    const { addFavoriteItem, removeFromFavoriteItems, isFavorite } = useFavorite();
     const isMovieFavorite = isFavorite(id)
     const toggleFavorite = () => {
         if (isMovieFavorite) {
-            console.log(`remove from ${favoriteItems}`)
             removeFromFavoriteItems(id)
         } else {
-            console.log(`add to ${favoriteItems}`)
             addFavoriteItem({ title, description, imgUrl, id })
         }
     }
@@ -43,7 +43,7 @@ function MovieRender({ title, description, imgUrl, id }) {
                 <button className='favorite-btn' onClick={toggleFavorite}>
                     {isMovieFavorite ? <SolidHeart /> : <RegularHeart />}
                 </button>
-                <Button className='all-details'>All details </Button>
+                <Button as={Link} to={`/details/${id}`} className='all-details'>All details </Button>
             </Card.Body>
         </Card>
     );

@@ -14,6 +14,30 @@
   width: 25px;
 }
 
+
+.other-info-list {
+  display: flex;
+  justify-content: space-around;
+}
+
 .show-btn {
   margin-right: 10px;
+}
+
+/* All details component  */
+.full-details {
+  margin-top: 1rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+@media (max-width: 800px) {
+  .full-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
