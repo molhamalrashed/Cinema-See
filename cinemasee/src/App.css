@@ -41,3 +41,14 @@
     align-items: center;
   }
 }
+
+
+/*Footer*/
+.footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-element {
+  text-align: left;
+}

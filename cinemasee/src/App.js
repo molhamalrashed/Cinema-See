@@ -9,6 +9,7 @@ import { FavoriteProvider } from './components/favorite-context';
 import FavoritePage from './components/Favorite-page';
 import AllDetails from './components/All-details';
 import Search from './components/Search';
+import Footer from './components/Footer';
 
 
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/details/:id" element={<AllDetails />} />
               <Route path="/search/:searchQuery" element={<Search />} />
             </Routes>
+            <Footer />
           </div>
         </Router>
       </ApiProvider>
